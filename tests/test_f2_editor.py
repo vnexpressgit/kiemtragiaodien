@@ -46,7 +46,7 @@ def test_f2_editor_rules(page: Page, notifier):
         # F2.5: Động từ dẫn nguồn
         if article_body.count() > 0:
             body_text = article_body.inner_text().lower()
-            banned_words = ["khẳng định", "cáo buộc", "tuyên bố"]
+            banned_words = ["khẳng định", "cáo buộc", "tuyên bố", "chỉ trích", "thú nhận", "thì thầm", "thét lên", "nghẹn ngào"]
             found_words = [word for word in banned_words if word in body_text]
             if found_words:
                 notifier.add_error("F2.5 - Lạm dụng động từ mạnh", url, f"Bài viết chứa các từ nên hạn chế: {', '.join(found_words)}.")

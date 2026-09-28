@@ -34,8 +34,8 @@ def test_f1_3_duplicate_articles(page: Page, notifier):
     # Lấy tất cả các thẻ tiêu đề (thường là a thuộc tính title hoặc text nội dung trong thẻ .title-news a)
     titles = page.locator(".title-news a").all_inner_texts()
     
-    # Lọc bỏ các tiêu đề trống
-    titles = [t.strip() for t in titles if t.strip()]
+    # Lọc bỏ các tiêu đề trống và các con số ngắn (số comment, số trang)
+    titles = [t.strip() for t in titles if t.strip() and len(t.strip()) > 10]
     
     duplicates = set([x for x in titles if titles.count(x) > 1])
     

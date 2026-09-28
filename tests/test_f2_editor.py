@@ -19,8 +19,8 @@ def test_f2_editor_rules(page: Page, notifier):
         page.goto(url)
         
         # F2.1: Độc lập Title & Lead
-        title = page.locator("h1.title-detail").inner_text().strip() if page.locator("h1.title-detail").count() > 0 else ""
-        lead = page.locator("p.description").inner_text().strip() if page.locator("p.description").count() > 0 else ""
+        title = page.locator("h1.title-detail").first.inner_text().strip() if page.locator("h1.title-detail").count() > 0 else ""
+        lead = page.locator("p.description").first.inner_text().strip() if page.locator("p.description").count() > 0 else ""
         
         if title and lead and title == lead:
             notifier.add_error("F2.1 - Trùng lặp Title và Lead", url, "Tiêu đề giống hệt đoạn Sapo.")

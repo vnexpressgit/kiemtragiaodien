@@ -2,7 +2,7 @@ name: VnExpress Automation Monitor
 
 on:
   schedule:
-    - cron: '0 */2 * * *' # Chạy mỗi 2 tiếng
+    - cron: '*/15 * * * *' # Chạy mỗi 15 phút
   workflow_dispatch: # Cho phép trigger thủ công
 
 jobs:

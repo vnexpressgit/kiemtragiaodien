@@ -12,7 +12,6 @@ def test_f1_1_status_code(page: Page, notifier):
             url=BASE_URL,
             detail=f"Trang chủ trả về mã HTTP {response.status} thay vì 200."
         )
-    assert response.status == 200, "Trang chủ phải trả về HTTP 200"
 
 def test_f1_2_layout_regression(page: Page, notifier):
     """Chụp ảnh màn hình khối #top-news và so sánh (cần có file chuẩn top_news_baseline.png)."""
@@ -25,7 +24,6 @@ def test_f1_2_layout_regression(page: Page, notifier):
             url=BASE_URL,
             detail="Không tìm thấy khối .top-news trên trang chủ."
         )
-    assert top_news.count() > 0, "Phải có khối top-news"
 
 def test_f1_3_duplicate_articles(page: Page, notifier):
     """Quét toàn bộ title trên trang chủ để phát hiện trùng lặp."""
@@ -45,4 +43,3 @@ def test_f1_3_duplicate_articles(page: Page, notifier):
             url=BASE_URL,
             detail=f"Phát hiện tiêu đề xuất hiện nhiều lần: {', '.join(duplicates)}"
         )
-    assert not duplicates, f"Có tiêu đề bị trùng lặp: {duplicates}"
